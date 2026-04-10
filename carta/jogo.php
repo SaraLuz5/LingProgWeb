@@ -35,14 +35,16 @@ $palipe = $_GET["palpite"];
 if($cartaCorreta == $palipe) {
    //Mostrar que acertou
    
+   echo "VOCÊ ACERTOU!!" .'<br/>';
+   echo $cartas[$cartaCorreta-1]->getNome() . " ";
    echo $cartas[$cartaCorreta-1]->getNaipe() . '<br/>';
-   echo "Você acertou!!";
-   echo "<img src='" . ("https://i.pinimg.com/736x/f2/4e/b5/f24eb5849b7f29cfcf824b1459599626.jpg") . ">";
+   echo "<img src='" . $cartas[$cartaCorreta-1]->getLink() . "'>";
    
    
 } else {
     //Mostrar que errou
-    echo "Você errou!!";
+    echo "Você errou!!" . '<br/>';
+    echo "<a href='index.php'>Voltar para o index</a>";
 
 
 }
