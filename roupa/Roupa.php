@@ -1,5 +1,8 @@
 <?php
 
+
+//atributos
+
 class Roupa{
  private string $tipo;
  private string $tamanho;
@@ -7,8 +10,11 @@ class Roupa{
  private string $valor;
  private string $composicao;
  private string $imagem;
+ private string $cor;
 
  
+//metodos
+
 
  /**
   * Get the value of tipo
@@ -118,4 +124,21 @@ class Roupa{
   return $this;
  }
 
+ /**
+  * Get the value of cor
+  */
+ public function getCor(): string
+ {
+  return $this->cor;
+ }
+
+ /**
+  * Set the value of cor
+  */
+ public function setCor(string $cor): self
+ {
+  $this->cor = $cor;
+
+  return $this;
+ }
 }
