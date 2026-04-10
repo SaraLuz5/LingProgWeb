@@ -1,9 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dados do Card</title>
+
+
+    <style>
+        h1 {
+            justify-content: center;
+            display: flex;
+            color: #c4658a;
+        }
+
+        .geral {
+            label {
+                color: #ab5576;
+                justify-content: center;
+                display: flex;
+            }
+
+            button {
+                background-color: #713e53;
+                color: #ffffff;
+                justify-content: center;
+                display: flex;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -12,48 +37,56 @@
 
     <form action="card.php" method="POST">
 
-        <label for="">Tipo: </label>
-        <input type="text" placeholder="Informe o tipo de roupa"
-            name="tipo">
+        <div class="geral">
+            <label for="">Tipo: </label>
+            <input type="text" placeholder="Informe o tipo de roupa"
+                name="tipo">
 
-        <br><br>
+            <br><br>
 
-        <label for="">Tamanho: </label>
-        <input type="text" placeholder="Informe o tamanho da roupa"
-            name="tamanho">
+            <label for="">Tamanho: </label>
+            <input type="text" placeholder="Informe o tamanho da roupa"
+                name="tamanho">
 
-        <br><br>
+            <br><br>
 
-        <label for="">Marca: </label>
-        <input type="text" placeholder="Informe a marca"
-            name="marca">
+            <label for="">Marca: </label>
+            <input type="text" placeholder="Informe a marca"
+                name="marca">
 
-        <br><br>
+            <br><br>
 
-        <label for="">Valor: </label>
-        <input type="text" placeholder="Informe o valor"
-            name="valor">
+            <label for="">Valor: </label>
+            <input type="text" placeholder="Informe o valor"
+                name="valor">
 
-        <br><br>
+            <br><br>
 
-          <label for="">Composição: </label>
-        <input type="text" placeholder="informe o tecido da roupa"
-            name="composicao">
+            <label for="">Composição: </label>
+            <input type="text" placeholder="informe o tecido da roupa"
+                name="composicao">
 
-        <br><br>
-
-
-        <label for="">Imagem: </label>
-        <input type="text" placeholder="Imagem"
-            name="linkImagem">
-
-        <br><br>
-
+            <br><br>
+            
+            <label for="">Cor: </label>
+            <input type="color" placeholder="Escolha a cor"
+            name="cor">
+            <br><br>
 
 
+            <label for="">Imagem: </label>
+            <input type="text" placeholder="Imagem"
+                name="linkImagem">
 
-        <button>Enviar</button>
+            <br><br>
 
-    </form> 
+
+
+
+            <button>Enviar</button>
+        </div>
+
+    </form>
 </body>
+
 </html>
