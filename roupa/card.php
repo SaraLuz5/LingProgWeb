@@ -1,13 +1,16 @@
 <?php
 require_once("modelo/Roupa.php");
 
+
+//objeto
 $roupa = new Roupa();
 $roupa->setTipo($_POST['tipo'])
     ->setTamanho($_POST['tamanho'])
     ->setMarca($_POST['marca'])
     ->setValor($_POST['valor'])
     ->setComposicao($_POST['composicao'])
-    ->setImagem($_POST['linkImagem']);
+    ->setImagem($_POST['linkImagem'])
+    ->setCor($_POST['cor']);
 
 ?>
 
@@ -25,7 +28,8 @@ $roupa->setTipo($_POST['tipo'])
             width: 600px;
             height: 600px;
             margin-top: auto;
-            background-color: #020612e2;
+            background-color: <?php echo $roupa->getCor()?>;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0,0.3);
         }
 
 
@@ -38,6 +42,7 @@ $roupa->setTipo($_POST['tipo'])
             justify-content: center;
             display: flex;
             color: #ffffff;
+            
         }
 
         .imagem {
@@ -56,6 +61,7 @@ $roupa->setTipo($_POST['tipo'])
         .link{
             justify-content: center;
             display: flex;
+            color: #ffffff;
     
         }
     </style>
@@ -66,6 +72,7 @@ $roupa->setTipo($_POST['tipo'])
     <h1>Dados da Roupa</h1>
 
     <div class="geral">
+
         <h1>Roupa:</h1>
         <span class="descricao">Peça: <?php echo $roupa->getTipo() ?></span><br>
         <span class="descricao"> Valor: <?php echo $roupa->getValor() ?></span><br>
