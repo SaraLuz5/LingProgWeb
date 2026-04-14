@@ -41,8 +41,14 @@ $roupa->setTipo($_POST['tipo'])
         h1 {
             justify-content: center;
             display: flex;
-            color: #ffffff;
+            color: #613749;
             
+        }
+
+        h2{
+            justify-content: center;
+            display: flex;
+            color: #ffffff;
         }
 
         .imagem {
@@ -73,7 +79,7 @@ $roupa->setTipo($_POST['tipo'])
 
     <div class="geral">
 
-        <h1>Roupa:</h1>
+        <h2>Roupa:</h2>
         <span class="descricao">Peça: <?php echo $roupa->getTipo() ?></span><br>
         <span class="descricao"> Valor: <?php echo $roupa->getValor() ?></span><br>
         <span class="descricao">Tamanho: <?php echo $roupa->getTamanho() ?></span><br>
