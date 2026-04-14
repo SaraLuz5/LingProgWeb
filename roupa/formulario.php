@@ -8,24 +8,37 @@
 
 
     <style>
+        body{
+
+         background-color: #c890a7c6;
+
+        }
+
         h1 {
             justify-content: center;
             display: flex;
-            color: #c4658a;
+            color: #613749;
         }
 
         .geral {
+
             label {
-                color: #ab5576;
-                justify-content: center;
+                color: #613749;
+                justify-content:center;
                 display: flex;
             }
 
+            input{
+                display: block;
+                margin: 0 auto;
+            }
+
             button {
-                background-color: #713e53;
+                background-color: #613749;
                 color: #ffffff;
-                justify-content: center;
-                display: flex;
+                display: block;
+                margin: 0 auto;
+               
             }
         }
     </style>
@@ -40,43 +53,43 @@
         <div class="geral">
             <label for="">Tipo: </label>
             <input type="text" placeholder="Informe o tipo de roupa"
-                name="tipo">
+                name="tipo" style="text-align: center;">
 
             <br><br>
 
             <label for="">Tamanho: </label>
             <input type="text" placeholder="Informe o tamanho da roupa"
-                name="tamanho">
+                name="tamanho"  style="text-align: center;">
 
             <br><br>
 
             <label for="">Marca: </label>
             <input type="text" placeholder="Informe a marca"
-                name="marca">
+                name="marca"  style="text-align: center;">
 
             <br><br>
 
             <label for="">Valor: </label>
             <input type="text" placeholder="Informe o valor"
-                name="valor">
+                name="valor"  style="text-align: center;">
 
             <br><br>
 
             <label for="">Composição: </label>
             <input type="text" placeholder="informe o tecido da roupa"
-                name="composicao">
+                name="composicao"  style="text-align: center;">
 
             <br><br>
             
             <label for="">Cor: </label>
             <input type="color" placeholder="Escolha a cor"
-            name="cor">
+            name="cor"  style="text-align: center;">
             <br><br>
 
 
             <label for="">Imagem: </label>
-            <input type="text" placeholder="Imagem"
-                name="linkImagem">
+            <input type="text" placeholder="url da imagem"
+                name="linkImagem"  style="text-align: center;">
 
             <br><br>
 
