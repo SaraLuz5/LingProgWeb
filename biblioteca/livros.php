@@ -14,13 +14,14 @@ if(isset($_POST['titulo'])) {
     $titulo = $_POST['titulo'];
     $genero = $_POST['genero'];
     $qtdPaginas = $_POST['paginas'];
+    $autor = $_POST['autor'];
     
    // 2-inserir os livros no bd
-   $sql = "INSERT INTO livros (titulo, genero, qtd_paginas)
-           VALUES (?, ?, ?)";
+   $sql = "INSERT INTO livros (titulo, genero, qtd_paginas, autor)
+           VALUES (?, ?, ?, ?)";
 
    $stm = $conexao->prepare($sql);
-   $stm->execute([$titulo , $genero, $qtdPaginas]);
+   $stm->execute([$titulo , $genero, $qtdPaginas , $autor]);
 
    //3- redirecionar para a pagina de listagem
    header("location: livros.php");
@@ -55,6 +56,8 @@ $livros = $stm->fetchAll();
             <th>Título</th>
             <th>Gênero</th>
             <th>Páginas</th>
+            <th>Autor</th>
+            <th> </th>
         </tr> 
 
         <!-- Dados -->
@@ -75,6 +78,7 @@ $livros = $stm->fetchAll();
                     ?>
                 </td>
                 <td><?= $l["qtd_paginas"] ?></td>
+                <td><?= $l["autor"] ?></td>
                 <td>
                     <a href="livros_excluir.php?id=<?= $l['id'] ?>"
                     onclick="if(! confirm('Confirma a exclusão?')) return false;"
@@ -88,14 +92,19 @@ $livros = $stm->fetchAll();
 
     <h3>Formulário</h3>
 
-    <form action="" method="POST">
+    <form action="" method="POST" onsubmit="return validarForm();">
 
         <input type="text" placeholder="Informe o título"
-            name="titulo">
+            name="titulo" id="titulo">
+
+        <br><br>
+        
+        <input type="text" placeholder="Informe o autor"
+             name="autor" id="autor">
 
         <br><br>
 
-        <select name="genero">
+        <select name="genero" id="genero"> 
             <option value="">---Selecione o gênero---</option>
             <option value="D">Drama</option>
             <option value="F">Ficção</option>
@@ -105,7 +114,7 @@ $livros = $stm->fetchAll();
 
         <br><br>
 
-        <input type="number" name="paginas" 
+        <input type="number" name="paginas" id="qtdPags"
             placeholder="Informe o número de páginas">
 
         <br><br>
@@ -113,6 +122,12 @@ $livros = $stm->fetchAll();
         <button>Gravar</button>
 
     </form>
+
+    <div id="msgErro" style="color: red; display: none;">
+        Exemplo de erro!
+    </div>
+
+    <script src="validacao.js"></script>
     
 </body>
 </html>
