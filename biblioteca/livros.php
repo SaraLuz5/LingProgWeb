@@ -10,21 +10,24 @@ $conexao = Conexao::getConexao();
 //print_r($conexao);
 
 //Salvar o livro
-if(isset($_POST['titulo'])) {
-    $titulo = $_POST['titulo'];
-    $genero = $_POST['genero'];
-    $qtdPaginas = $_POST['paginas'];
-    $autor = $_POST['autor'];
-    
-   // 2-inserir os livros no bd
-   $sql = "INSERT INTO livros (titulo, genero, qtd_paginas, autor)
+if (isset($_POST['titulo'])) {
+    $titulo = trim($_POST['titulo']) ? trim($_POST['titulo']) : null;
+    $genero = trim($_POST['genero']) ? trim($_POST['genero']) : null;
+    $autor = trim($_POST['autor']) ? trim($_POST['autor']) : null;
+    $qtdPaginas = is_numeric($_POST['paginas']) ? $_POST['paginas'] : null;
+
+    // 1.1-Validar os dados
+
+
+    // 2-inserir os livros no bd
+    $sql = "INSERT INTO livros (titulo, genero, qtd_paginas, autor)
            VALUES (?, ?, ?, ?)";
 
-   $stm = $conexao->prepare($sql);
-   $stm->execute([$titulo , $genero, $qtdPaginas , $autor]);
+    $stm = $conexao->prepare($sql);
+    $stm->execute([$titulo, $genero, $qtdPaginas, $autor]);
 
-   //3- redirecionar para a pagina de listagem
-   header("location: livros.php");
+    //3- redirecionar para a pagina de listagem
+    header("location: livros.php");
 }
 
 //Listagem dos livros
@@ -38,11 +41,13 @@ $livros = $stm->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de livros</title>
 </head>
+
 <body>
 
     <h1>Cadastro de livros</h1>
@@ -58,53 +63,52 @@ $livros = $stm->fetchAll();
             <th>Páginas</th>
             <th>Autor</th>
             <th> </th>
-        </tr> 
+        </tr>
 
         <!-- Dados -->
-        <?php foreach($livros as $l): ?>
+        <?php foreach ($livros as $l): ?>
             <tr>
                 <td><?= $l["id"] ?></td>
                 <td><?= $l["titulo"] ?></td>
                 <td>
                     <?php
-                        if($l['genero'] == 'D')
-                            echo "Drama";
-                        else if($l['genero'] == 'F')
-                            echo "Ficção";
-                        else if($l['genero'] == 'R')
-                            echo "Romance";
-                        else if($l['genero'] == 'O')
-                            echo "Outro";                        
+                    if ($l['genero'] == 'D')
+                        echo "Drama";
+                    else if ($l['genero'] == 'F')
+                        echo "Ficção";
+                    else if ($l['genero'] == 'R')
+                        echo "Romance";
+                    else if ($l['genero'] == 'O')
+                        echo "Outro";
                     ?>
                 </td>
                 <td><?= $l["qtd_paginas"] ?></td>
                 <td><?= $l["autor"] ?></td>
                 <td>
                     <a href="livros_excluir.php?id=<?= $l['id'] ?>"
-                    onclick="if(! confirm('Confirma a exclusão?')) return false;"
-                    >Excluir</a>
+                        onclick="if(! confirm('Confirma a exclusão?')) return false;">Excluir</a>
                 </td>
             </tr>
-        
+
         <?php endforeach; ?>
     </table>
 
 
     <h3>Formulário</h3>
 
-    <form action="" method="POST" onsubmit="return validarForm();">
-
+    <!-- <form action="" method="POST" onsubmit="return validarForm();"> -->
+    <form action="" method="POST">
         <input type="text" placeholder="Informe o título"
             name="titulo" id="titulo">
 
         <br><br>
-        
+
         <input type="text" placeholder="Informe o autor"
-             name="autor" id="autor">
+            name="autor" id="autor">
 
         <br><br>
 
-        <select name="genero" id="genero"> 
+        <select name="genero" id="genero">
             <option value="">---Selecione o gênero---</option>
             <option value="D">Drama</option>
             <option value="F">Ficção</option>
@@ -128,6 +132,7 @@ $livros = $stm->fetchAll();
     </div>
 
     <script src="validacao.js"></script>
-    
+
 </body>
+
 </html>
